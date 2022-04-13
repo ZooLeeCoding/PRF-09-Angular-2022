@@ -1,0 +1,13 @@
+<h3 style="color: red" *ngIf="msg !== ''">{{ msg }}</h3>
+<h2>Welcome, please login!</h2>
+<div>
+  <div>
+    <label>Username</label>
+    <input type="text" [(ngModel)]="username" />
+  </div>
+  <div>
+    <label>Password</label>
+    <input type="password" [(ngModel)]="password" />
+  </div>
+  <button (click)="login()">LOGIN</button>
+</div>
