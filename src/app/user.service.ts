@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserService {
+  // mivel a service Singleton, ezért alkalmas különböző értékek, adatok megosztására is
   private userLogin = false;
   constructor() {}
 

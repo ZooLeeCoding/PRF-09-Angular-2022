@@ -1,4 +1,5 @@
 import { Component, OnInit, VERSION } from '@angular/core';
+import { ConnectionService } from '../utils/connection.service';
 
 @Component({
   selector: 'app-elso-ora',
@@ -6,10 +7,19 @@ import { Component, OnInit, VERSION } from '@angular/core';
   styleUrls: ['./elso-ora.component.css'],
 })
 export class ElsoOraComponent implements OnInit {
-  constructor() {}
+  constructor(private connection: ConnectionService) {}
 
   // lifecycle hook, az Angular komponensek betöltésének megfelelő pontjain hívódnak meg automatikusan, az ngOnInit a konstruktor után de még a komponens megjelenítése előtt
-  ngOnInit() {}
+  ngOnInit() {
+    this.connection.getArukeszlet().subscribe(data => {
+      console.log(data);
+    }, error => {
+      if(error) {
+        console.log('Hiba a http lekérés során')
+        console.log(error)
+      }
+    })
+  }
 
   name = 'Angular ' + VERSION.major;
 
